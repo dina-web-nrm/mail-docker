@@ -10,7 +10,7 @@ mail:
   hostname: mail
   domainname: dina-web.net
   environment:
-    - DMS_SSL=letsencrypt
+    - DMS_SSL=selfsigned
   ports:
     - "25:25"
     - "143:143"
