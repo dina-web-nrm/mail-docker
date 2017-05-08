@@ -22,4 +22,4 @@ fetch-setup:
 	wget -q -O setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh
 
 setup:
-	./setup.sh  -i tvial/docker-mailserver:v2 email add akranes@mail.dina-web.net testing
+	./setup.sh  -i tvial/docker-mailserver:2.1 email add akranes@mail.dina-web.net testing
