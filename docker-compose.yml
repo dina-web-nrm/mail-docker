@@ -4,10 +4,11 @@ fs_mail:
     - ./spamassassin:/tmp/spamassassin/
     - ./postfix:/tmp/postfix/
     - ./letsencrypt/etc:/etc/letsencrypt
+    - maildata:/var/mail
+    - mailstate:/var/mail-state
+    - ./config/:/tmp/docker-mailserver
 
 mail:
-  #image: tvial/docker-mailserver:v1
-  #image: tvial/docker-mailserver:v2
   image: tvial/docker-mailserver:2.1
   hostname: mail
   domainname: dina-web.net
