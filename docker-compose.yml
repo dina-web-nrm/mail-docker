@@ -1,9 +1,9 @@
 fs_mail:
   image: tianon/true
   volumes:
-    - ./spamassassin:/tmp/spamassassin/
-    - ./postfix:/tmp/postfix/
-    - ./letsencrypt/etc:/etc/letsencrypt
+    #- ./spamassassin:/tmp/spamassassin/
+    #- ./postfix:/tmp/postfix/
+    #- ./letsencrypt/etc:/etc/letsencrypt
     - maildata:/var/mail
     - mailstate:/var/mail-state
     - ./config/:/tmp/docker-mailserver
@@ -14,6 +14,13 @@ mail:
   domainname: dina-web.net
   environment:
     - DMS_SSL=selfsigned
+  #environment:
+  #  - ENABLE_SPAMASSASSIN=1
+  #  - ENABLE_CLAMAV=1
+  #  - ENABLE_FAIL2BAN=1
+  #  - ENABLE_POSTGREY=1
+  #  - ONE_DIR=1
+  #  - DMS_DEBUG=0
   ports:
     - "25:25"
     - "143:143"
