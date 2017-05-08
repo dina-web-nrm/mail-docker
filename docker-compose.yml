@@ -6,7 +6,9 @@ fs_mail:
     - ./letsencrypt/etc:/etc/letsencrypt
 
 mail:
-  image: tvial/docker-mailserver
+  #image: tvial/docker-mailserver:v1
+  #image: tvial/docker-mailserver:v2
+  image: tvial/docker-mailserver:2.1
   hostname: mail
   domainname: dina-web.net
   environment:
