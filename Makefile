@@ -24,5 +24,6 @@ fetch-setup:
 
 pull:
 	@docker pull tvial/docker-mailserver:${MAILSERVER_TAG}
+
 setup:
 	./setup.sh  -i tvial/docker-mailserver:${MAILSERVER_TAG} email add akranes@mail.dina-web.net akranes
