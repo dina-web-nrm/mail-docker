@@ -14,7 +14,7 @@ services:
     hostname: mail
     domainname: dina-web.net
     environment:
-    - DMS_SSL=selfsigned
+      - DMS_SSL=selfsigned
       - ENABLE_SPAMASSASSIN=1
       - ENABLE_CLAMAV=1
     #  - ENABLE_FAIL2BAN=1
