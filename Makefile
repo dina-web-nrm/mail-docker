@@ -4,7 +4,7 @@ PWD = $(shell pwd)
 
 all: up
 
-up:  fetch-setup setup
+up:  
 	@docker-compose up -d
 
 down:
