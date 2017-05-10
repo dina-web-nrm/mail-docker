@@ -5,4 +5,5 @@ An integration project to provide email - this is "dmail" (short for Docker Emai
 * pull down the 'tvial/docker-mailserver:2.3'
 * run 'make fetch-setup'
 * run 'make setup'
+* run './dkim_setup.sh'
 * run 'make up'
