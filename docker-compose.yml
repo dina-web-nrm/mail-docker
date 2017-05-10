@@ -1,30 +1,59 @@
-fs_mail:
-  image: tianon/true
-  volumes:
-    #- ./spamassassin:/tmp/spamassassin/
-    #- ./postfix:/tmp/postfix/
-    #- ./letsencrypt/etc:/etc/letsencrypt
-    - maildata:/var/mail
-    - mailstate:/var/mail-state
-    - ./config/:/tmp/docker-mailserver
+version: '2'
 
-mail:
-  image: tvial/docker-mailserver:2.1
-  hostname: mail
-  domainname: dina-web.net
-  environment:
-    - DMS_SSL=selfsigned
-  #environment:
-  #  - ENABLE_SPAMASSASSIN=1
-  #  - ENABLE_CLAMAV=1
-  #  - ENABLE_FAIL2BAN=1
-  #  - ENABLE_POSTGREY=1
-  #  - ONE_DIR=1
-  #  - DMS_DEBUG=0
-  ports:
-    - "25:25"
-    - "143:143"
-    - "587:587"
-    - "993:993"
-  volumes_from:
-    - fs_mail
+services:
+
+  fs_mail:
+    image: tianon/true
+    volumes:
+      - ./maildata:/var/mail
+      - ./mailstate:/var/mail-state
+      - ./config/:/tmp/docker-mailserver/
+
+  mail:
+    image: tvial/docker-mailserver:2.3
+    hostname: mail
+    domainname: dina-web.net
+    environment:
+    #- DMS_SSL=selfsigned
+      - ENABLE_SPAMASSASSIN=1
+      - ENABLE_CLAMAV=1
+      - ENABLE_FAIL2BAN=1
+      - ENABLE_POSTGREY=1
+      - ONE_DIR=1
+      - DMS_DEBUG=0
+    ports:
+      - "25:25"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+    volumes_from:
+      - fs_mail
+
+  dnsmasq: #at nrm
+    image: andyshinn/dnsmasq:2.76
+    command: --log-facility=-
+    container_name: dnsmasq
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 172.17.0.1:53:53/tcp
+      - 172.17.0.1:53:53/udp
+
+  proxy:
+    image: jwilder/nginx-proxy
+    container_name: mail.dina-web.net
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx-proxy-certs:/etc/nginx/certs:ro
+
+#test
+#  collab:
+#    image: mattermost/platform
+#    environment:
+#      - VIRTUAL_HOST=mail.dina-web.net
+#      - VIRTUAL_PORT=1234
+#    ports:
+#      - "1234:80"
