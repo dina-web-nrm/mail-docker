@@ -1,6 +1,7 @@
 #!make
 
 PWD = $(shell pwd)
+MAILSERVER_TAG=2.2
 
 all: up
 
@@ -21,5 +22,7 @@ logs:
 fetch-setup:
 	wget -q -O setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh
 
+pull:
+	@docker pull tvial/docker-mailserver:${MAILSERVER_TAG}
 setup:
-	./setup.sh  -i tvial/docker-mailserver:2.3 email add akranes@mail.dina-web.net akranes
+	./setup.sh  -i tvial/docker-mailserver:${MAILSERVER_TAG} email add akranes@mail.dina-web.net akranes
