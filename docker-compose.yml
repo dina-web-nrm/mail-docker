@@ -10,7 +10,7 @@ services:
       - ./config/:/tmp/docker-mailserver/
 
   mail:
-    image: tvial/docker-mailserver:2.3
+    image: tvial/docker-mailserver:2.2
     hostname: mail
     domainname: dina-web.net
     environment:
@@ -20,7 +20,7 @@ services:
     #  - ENABLE_FAIL2BAN=1
     #  - ENABLE_POSTGREY=1
     #  - ONE_DIR=1
-    #  - DMS_DEBUG=0
+      - DMS_DEBUG=1
     ports:
       - "25:25"
       - "143:143"
@@ -29,7 +29,7 @@ services:
     volumes_from:
       - fs_mail
 
-  dnsmasq: #at nrm
+  dnsmasq: #testing this at my workplace ...
     image: andyshinn/dnsmasq:2.76
     command: --log-facility=-
     container_name: dnsmasq
