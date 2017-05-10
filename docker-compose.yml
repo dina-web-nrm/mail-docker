@@ -14,13 +14,13 @@ services:
     hostname: mail
     domainname: dina-web.net
     environment:
-    #- DMS_SSL=selfsigned
+    - DMS_SSL=selfsigned
       - ENABLE_SPAMASSASSIN=1
       - ENABLE_CLAMAV=1
-      - ENABLE_FAIL2BAN=1
-      - ENABLE_POSTGREY=1
-      - ONE_DIR=1
-      - DMS_DEBUG=0
+    #  - ENABLE_FAIL2BAN=1
+    #  - ENABLE_POSTGREY=1
+    #  - ONE_DIR=1
+    #  - DMS_DEBUG=0
     ports:
       - "25:25"
       - "143:143"
