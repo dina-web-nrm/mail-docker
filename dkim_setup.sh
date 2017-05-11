@@ -4,4 +4,4 @@
 # https://addons.mozilla.org/en-US/thunderbird/addon/dkim-verifier/
 docker run --rm \
   -v "$(pwd)/config":/tmp/docker-mailserver \
-  -ti tvial/docker-mailserver:2.3 generate-dkim-config
+  -ti tvial/docker-mailserver:2.2 generate-dkim-config
