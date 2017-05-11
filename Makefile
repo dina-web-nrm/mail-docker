@@ -1,7 +1,7 @@
 #!make
 
 PWD = $(shell pwd)
-MAILSERVER_TAG=2.2
+MAILSERVER_TAG=2.2 # obs, TAG 2.3 is buggy as of now (2017-05-11) se issues 
 
 all: up
 
