@@ -11,11 +11,8 @@ up:
 down:
 	@docker-compose down
 
-ps:
-	@docker-compose ps
-
-logs:
-	@docker-compose logs -f
+test-ssl:
+	docker exec mail openssl s_client -connect 0.0.0.0:25 -starttls smtp -CApath /etc/ssl/certs/
 
 pull:
 	@docker pull tvial/docker-mailserver:${MAILSERVER_TAG}
