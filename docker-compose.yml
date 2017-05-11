@@ -7,12 +7,14 @@ services:
     volumes:
       - ./maildata:/var/mail
       - ./mailstate:/var/mail-state
-      - ./config/:/tmp/docker-mailserver/
+      - ./config:/tmp/docker-mailserver
+      - ./certs:/tmp/ssl:ro
 
   mail:
     image: tvial/docker-mailserver:2.2
     hostname: mail
     domainname: dina-web.net
+    container_name: mail
     environment:
       - DMS_SSL=selfsigned
       - ENABLE_SPAMASSASSIN=1
@@ -20,7 +22,10 @@ services:
     #  - ENABLE_FAIL2BAN=1
     #  - ENABLE_POSTGREY=1
     #  - ONE_DIR=1
-      - DMS_DEBUG=1
+      - DMS_DEBUG=0 # 1when testing, gives a good startup-log
+      - SSL_TYPE=manual
+      - SSL_CERT_PATH=/tmp/ssl/dina-web.net.crt
+      - SSL_KEY_PATH=/tmp/ssl/dina-web.net.key # private key
     ports:
       - "25:25"
       - "143:143"
@@ -28,32 +33,3 @@ services:
       - "993:993"
     volumes_from:
       - fs_mail
-
-  dnsmasq: #testing this at my workplace ...
-    image: andyshinn/dnsmasq:2.76
-    command: --log-facility=-
-    container_name: dnsmasq
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - 172.17.0.1:53:53/tcp
-      - 172.17.0.1:53:53/udp
-
-  proxy:
-    image: jwilder/nginx-proxy
-    container_name: mail.dina-web.net
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./nginx-proxy-certs:/etc/nginx/certs:ro
-
-#test
-#  collab:
-#    image: mattermost/platform
-#    environment:
-#      - VIRTUAL_HOST=mail.dina-web.net
-#      - VIRTUAL_PORT=1234
-#    ports:
-#      - "1234:80"
