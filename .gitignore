@@ -1,5 +1,5 @@
-dina-web.net.crt
-dina-web.net.key
+*.crt
+*.key
 setup.sh
 maildata
 mailstate
