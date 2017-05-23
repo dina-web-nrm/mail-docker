@@ -22,7 +22,7 @@ services:
     #  - ENABLE_FAIL2BAN=1
     #  - ENABLE_POSTGREY=1
     #  - ONE_DIR=1
-      - DMS_DEBUG=0 # 1when testing, gives a good startup-log
+      - DMS_DEBUG=0 # DMS_DEBUG= 1 (when testing, gives a good startup-log)
       - SSL_TYPE=manual
       - SSL_CERT_PATH=/tmp/ssl/dina-web.net.crt
       - SSL_KEY_PATH=/tmp/ssl/dina-web.net.key # private key
