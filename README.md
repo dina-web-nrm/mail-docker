@@ -10,8 +10,7 @@ An integration project to provide email - this is "dmail" (short for Docker Emai
 
 Verify that email has been added : cat config/postfix-accounts.cf 
 
-run './dkim_setup.sh' <p>
-see -> http://dkim.org/ 
+
 
 
 
@@ -21,4 +20,13 @@ see -> http://dkim.org/
 1. edit the Makefile, target 'add-email_account' change emailaddress and password
 2. run 'make add-email_account'
 3. check : cat config/postfix-accounts.cf ( should display emailaddress & crypted psw)
+
+
+** dkim **
+https://github.com/tomav/docker-mailserver/wiki/Configure-DKIM
+NB: " To enable DKIM signature, you must have created your mail accounts. Once its done, just run from inside the directory of docker-compose.yml: "
+
+run './dkim_setup.sh' <p>
+see -> http://dkim.org/ 
+
 
