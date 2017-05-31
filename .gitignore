@@ -3,6 +3,7 @@
 setup.sh
 maildata
 mailstate
-config
 postfix
+postfix-accounts.cf
+
 *.html
