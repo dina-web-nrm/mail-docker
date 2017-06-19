@@ -23,8 +23,9 @@ Verify that email has been added : cat config/postfix-accounts.cf
 3. check : cat config/postfix-accounts.cf ( should display emailaddress & crypted psw)
 
 
-** dkim **
-https://github.com/tomav/docker-mailserver/wiki/Configure-DKIM
+**dkim**
+
+https://github.com/tomav/docker-mailserver/wiki/Configure-DKIM <p>
 NB: " To enable DKIM signature, you must have created your mail accounts. Once its done, just run from inside the directory of docker-compose.yml: "
 
 run './dkim_setup.sh' <p>
