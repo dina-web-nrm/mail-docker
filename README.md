@@ -17,7 +17,7 @@ Verify that email has been added : cat config/postfix-accounts.cf
 
 **add an account**
 
-0. run 'make get-setup_script'
+0. run 'make get-setup_script' (fetching the 'setup.sh'-file,  that is needed for the next step ....)
 1. edit the Makefile, target 'add-email_account' change emailaddress and password
 2. run 'make add-email_account'
 3. check : cat config/postfix-accounts.cf ( should display emailaddress & crypted psw)
