@@ -29,4 +29,4 @@ email_list-accounts:
 
 email_add-account: get-setup_script 
 	@echo "sets up 1 email account with password"
-	./setup.sh  -i tvial/docker-mailserver:${MAILSERVER_TAG} email add akranes@mail.dina-web.net akranes
+	./setup.sh  -i tvial/docker-mailserver:${MAILSERVER_TAG} email add xxx@mail.dina-web.net xxxx
