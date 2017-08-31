@@ -13,7 +13,7 @@ down:
 	@docker-compose down
 
 test-ssl:
-	docker exec mail openssl s_client -connect 0.0.0.0:25 -starttls smtp -CApath /etc/ssl/certs/
+	docker exec mail.dina-web.net openssl s_client -connect 0.0.0.0:25 -starttls smtp -CApath /etc/ssl/certs/
 
 pull:
 	@docker pull tvial/docker-mailserver:${MAILSERVER_TAG}
@@ -29,4 +29,4 @@ email_list-accounts:
 
 email_add-account: get-setup_script 
 	@echo "sets up 1 email account with password"
-	./setup.sh  -i tvial/docker-mailserver:${MAILSERVER_TAG} email add xxx@mail.dina-web.net xxxx
+        ./add-email.sh
