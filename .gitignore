@@ -1,5 +1,6 @@
 *.crt
 *.key
+users.csv
 setup.sh
 maildata
 mailstate
