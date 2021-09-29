@@ -1,8 +1,8 @@
-#!make
+#! make
 
 PWD = $(shell pwd)
 MAILSERVER_TAG=2.2 # obs, TAG 2.3 is buggy as of now (2017-05-11) se issues 
- #docker network create redminedocker_default
+#docker network create redminedocker_default
 
 all: up
 

@@ -1,1 +1,2 @@
-#./setup.sh -i tvial/docker-mailserver:${MAILSERVER_TAG} email add <user>@mail.dina-web.net <psw> 
+#!/bin/sh
+./setup.sh -i tvial/docker-mailserver:2.2 email add hostmaster@naturforskaren.se <password-here> 
